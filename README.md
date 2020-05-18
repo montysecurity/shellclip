@@ -11,8 +11,7 @@ Copy Reverse Shell Code Straight to Clipboard for Many Languages
 ## languages supported
 - Bash
 - C
+- Perl
 - PHP
-- Python
-- PHP + Python
-- PHP + Python3
 - PowerShell (PS1)
+- Python
