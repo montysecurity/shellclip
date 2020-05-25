@@ -25,5 +25,5 @@ if list_payloads == True:
 	os.system("ls revshells/ | tr ' ' '\n' | tr [:lower:] [:upper:] | awk -F. '{print $2}'")
 	exit()
 
-syscall = str("cat shells/*." + lang + " | sed 's/0.0.0.0/" + str(lhost) + "/g' | sed 's/5253/" + str(lport) + "/g' ")
+syscall = str("cat revshells/*." + lang + " | sed 's/0.0.0.0/" + str(lhost) + "/g' | sed 's/5253/" + str(lport) + "/g' ")
 pyperclip.copy(os.popen(syscall).read())
