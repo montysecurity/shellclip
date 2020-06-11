@@ -22,7 +22,7 @@ if (function_exists('pcntl_fork')) {
 	}
 
 	if (posix_setsid() == -1) {
-		printit("Error: Can't setsid()");
+		printit("ERROR: Can't setsid()");
 		exit(1);
 	}
 
